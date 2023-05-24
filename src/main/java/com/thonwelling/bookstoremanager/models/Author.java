@@ -1,8 +1,15 @@
 package com.thonwelling.bookstoremanager.models;
 
 import jakarta.persistence.*;
+import lombok.*;
 
+@AllArgsConstructor
+@Builder
 @Entity
+@EqualsAndHashCode
+@Getter
+@NoArgsConstructor
+@Setter
 public class Author {
 
   @Id

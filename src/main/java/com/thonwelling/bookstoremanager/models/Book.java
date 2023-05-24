@@ -1,8 +1,15 @@
 package com.thonwelling.bookstoremanager.models;
 
 import jakarta.persistence.*;
+import lombok.*;
 
+@AllArgsConstructor
+@Builder
 @Entity
+@EqualsAndHashCode
+@Getter
+@NoArgsConstructor
+@Setter
 public class Book {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,5 +27,4 @@ public class Book {
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "author_id")
   private Author author;
-
 }
