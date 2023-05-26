@@ -1,9 +1,8 @@
 package com.thonwelling.bookstoremanager.controller;
 
-import com.thonwelling.bookstoremanager.dto.MessageResponseDto;
-import com.thonwelling.bookstoremanager.models.Book;
-import com.thonwelling.bookstoremanager.repository.BookRepository;
+import com.thonwelling.bookstoremanager.dto.BookDto;
 import com.thonwelling.bookstoremanager.service.BookService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +16,7 @@ public class BookController {
   BookService service;
 
   @PostMapping
-  public MessageResponseDto creteBook(@RequestBody Book book) {
+  public BookDto creteBook(@RequestBody @Valid BookDto book) {
     return service.creteBook(book);
   }
 }
