@@ -16,4 +16,8 @@ public class BookService {
     var entity = BookMapper.parseObject(book, Book.class);
     return BookMapper.parseObject(repository.save(entity), BookDto.class);
   }
+
+  public BookDto getBookById(Long id) {
+    return BookMapper.parseObject(repository.findById(id), BookDto.class);
+  }
 }
