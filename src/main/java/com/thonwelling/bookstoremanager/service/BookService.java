@@ -12,7 +12,7 @@ public class BookService {
   @Autowired
   BookRepository repository;
 
-  public BookDto creteBook(BookDto book) {
+  public BookDto createBook(BookDto book) {
     var entity = BookMapper.parseObject(book, Book.class);
     return BookMapper.parseObject(repository.save(entity), BookDto.class);
   }

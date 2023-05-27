@@ -16,7 +16,7 @@ public class BookController {
   BookService service;
 
   @PostMapping
-  public BookDto creteBook(@RequestBody @Valid BookDto book) {
-    return service.creteBook(book);
+  public BookDto createBook(@RequestBody @Valid BookDto book) {
+    return service.createBook(book);
   }
 }

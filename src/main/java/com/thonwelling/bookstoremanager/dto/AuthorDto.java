@@ -1,27 +1,22 @@
 package com.thonwelling.bookstoremanager.dto;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @AllArgsConstructor
-@Builder
-@Entity
-@EqualsAndHashCode
-@Getter
 @NoArgsConstructor
+@Builder
+@Getter
 @Setter
 public class AuthorDto {
 
   private Long id;
-  @NotBlank(message = "Preecha o Nome")
-  @Size(max = 200)
+  @NotEmpty(message = "Preencha o campo.")
+  @Size(min = 3, max =50, message = "'${validatedValue}' precisa estar entre {min} e {max} caracteres.")
   private String name;
 
-  @NotNull
-  @Size(max = 100)
+  @NotNull(message = "Preencha o campo .")
   private Integer age;
 }
