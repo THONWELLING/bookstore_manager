@@ -1,6 +1,7 @@
 package com.thonwelling.bookstoremanager.service;
 
 import com.thonwelling.bookstoremanager.dto.BookDto;
+import com.thonwelling.bookstoremanager.exceptions.BookNotFoundException;
 import com.thonwelling.bookstoremanager.mapper.BookMapper;
 import com.thonwelling.bookstoremanager.models.Book;
 import com.thonwelling.bookstoremanager.repository.BookRepository;
@@ -17,7 +18,9 @@ public class BookService {
     return BookMapper.parseObject(repository.save(entity), BookDto.class);
   }
 
-  public BookDto getBookById(Long id) {
-    return BookMapper.parseObject(repository.findById(id), BookDto.class);
+  public BookDto getBookById(Long id) throws BookNotFoundException {
+    Book book = repository.findById(id)
+        .orElseThrow(() -> new BookNotFoundException(id));
+    return BookMapper.parseObject(book, BookDto.class);
   }
 }

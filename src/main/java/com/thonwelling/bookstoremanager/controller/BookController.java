@@ -1,6 +1,7 @@
 package com.thonwelling.bookstoremanager.controller;
 
 import com.thonwelling.bookstoremanager.dto.BookDto;
+import com.thonwelling.bookstoremanager.exceptions.BookNotFoundException;
 import com.thonwelling.bookstoremanager.service.BookService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class BookController {
   }
 
   @GetMapping("/{id}")
-  public BookDto getBookById(@PathVariable Long id) {
+  public BookDto getBookById(@PathVariable Long id) throws BookNotFoundException {
     return service.getBookById(id);
   }
 }

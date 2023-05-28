@@ -1,6 +1,7 @@
 package com.thonwelling.bookstoremanager.service;
 
 import com.thonwelling.bookstoremanager.dto.BookDto;
+import com.thonwelling.bookstoremanager.exceptions.BookNotFoundException;
 import com.thonwelling.bookstoremanager.models.Book;
 import com.thonwelling.bookstoremanager.repository.BookRepository;
 import com.thonwelling.bookstoremanager.utils.BookUtils;
@@ -22,7 +23,7 @@ public class BookServiceTest {
   private BookService bookService;
 
   @Test
-  void wheGivenExistingIdThenReturnThisBook() {
+  void wheGivenExistingIdThenReturnThisBook() throws BookNotFoundException {
     Book expectedFoundBook = BookUtils.createFakeBook();
 
     Mockito.when(bookRepository.findById(expectedFoundBook.getId())).thenReturn(Optional.of(expectedFoundBook));
